@@ -1650,6 +1650,8 @@ static void suhosin_execute_internal(zend_execute_data *execute_data_ptr, zend_f
 	zval **return_value_ptr;
 	zval *this_ptr;
 	int ht;
+   char *lcname;
+   int function_name_strlen, free_lcname = 0;
 
 	if (fci) {
 		return_value = *fci->retval_ptr_ptr;
@@ -1669,9 +1671,9 @@ static void suhosin_execute_internal(zend_execute_data *execute_data_ptr, int re
 {
 	zval *return_value;
 	int ht = execute_data_ptr->opline->extended_value;
-#endif
 	char *lcname;
 	int function_name_strlen, free_lcname = 0;
+#endif
 	zend_class_entry *ce = NULL;
 	internal_function_handler *ih;
 
